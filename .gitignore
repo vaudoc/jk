@@ -1,73 +1,15 @@
 # .gitignore
 
-# Product
-#to-dos
-NOTES.md
-ssl
-config/registry
-
-# Sensitive configurations
-# AWS etc.
-
-# Mac
 .DS_Store
-*.autosave
-.console_history
 
-# MacVim
 *.swp
 *.swo
 *~
 tags
 
-# Bundler
-.bundle
-# For gems the lock will not be checked in - check in for the app
-#Gemfile.lock
-pkg/
-
-# Rails3
-#public/system
-#config/database.yml
-lib/dummy*
 *.log
 *.pid
 tmp/
-.sass-cache/
 
-# DB
 *.sqlite*
-db/jan_kuhl*
-
-# Coffeescripts: will be recompiled to the gem version used.
-public/javascripts/compiled/
-
-# Sproutcore
-app/sproutcore/tmp
-
-# Pow rack server
-.powenv
-
-# Yard
-doc
-.yardoc/
-
-# Tests
-coverage
-spec/tmp/
-capybara-*.html
-benchmarks_*
-#spec/dummy
-spec/dummy/db/*.sqlite*
-spec/dummy/tmp
-spec/dummy/log
-
-# Jammit
-*.js.gz
-*.css.gz
-
-# Others
-# Anything of interest that doesn't belong into the repo, e.g., example reference projects from github.
-*_
-# Some files relevant to the application like the database dumps are in this folder.
-backups/
+db/jan_*
