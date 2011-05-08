@@ -1,0 +1,12 @@
+In your themes/site-1/[theme-name]/templates/_shared.liquid, add something like the following:
+
+{% if pages %}
+    <p>{{ section | prev_next_section_page_links: pages }}</p>
+{% endif %}
+
+This adds the pagination that you see (e.g.) on the blog homepage (http://www.artweb-design.de).
+
+For more info see
+
+http://www.artweb-design.de/2007/4/2/howto-use-mephisto-article-list-pagination-plugin
+

@@ -1,0 +1,14 @@
+development:
+    server: smtp.1und1.de
+    port: 25
+    domain: jankuhl.de
+    authentication: login
+    username: info@jankuhl.de
+    password: jankuhl
+production:
+    server: smtp.1und1.de
+    port: 25
+    domain: jankuhl.de
+    authentication: login
+    username: info@jankuhl.de
+    password: jankuhl

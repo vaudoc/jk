@@ -1,0 +1,14 @@
+Von: <%= @contact_message.name %> <%= @contact_message.surname %> (<%= @contact_message.author_email %><%= @contact_message.author_phone == "" ? "" : ", Tel. " + @contact_message.author_phone %>)
+Betreff: <%= @contact_message.subject %>
+
+<%= @contact_message.body %>
+
+[Formulardaten]
+Firma: <%= @contact_message.company %>
+Name: <%= @contact_message.mrs %> <%= @contact_message.name %> <%= @contact_message.surname %>
+Straße: <%= @contact_message.street %>
+PLZ Ort: <%= @contact_message.city %>
+Telefon: <%= @contact_message.author_phone %>
+Telefax: <%= @contact_message.author_fax %>
+E-Mail: <%= @contact_message.author_email %>
+CC: <%= @contact_message.cc_email %>

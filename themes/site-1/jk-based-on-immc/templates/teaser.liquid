@@ -1,0 +1,74 @@
+<div id="primary" class="single-post">
+
+	{% comment %}
+		{% include 'marketing' %}
+    {% endcomment %}
+
+	<div class="inside">
+
+		{% if site.current_section %}
+
+			{{ site.current_section | section_tags: "Teaser:" | assign_to: 'tags' }}
+			
+			<!-- tagcloud -->
+  			{% if tags.size > 0 %}
+				<div class="story">
+					<div class="tagcloud">
+    					Tagcloud Teaser: 
+    					{% for tag in tags %}
+    						{{ tag | yatagcloud: 1, 2, "em" }}/
+    					{% endfor %}
+		    		</div>
+	    		</div>
+  			{% endif %}
+		  	<div class="clear"></div>
+
+  			<div class="secondary menu">
+				<h2>{{ site.current_section.name }}</h2>
+      			<div class="featured">
+					{% for tag in tags %}
+						<p><a href="{{ tag | section_tag_url }}">
+							{{ tag | tag_strip }} ({{ tag | tagged_articles | size }})
+						</a></p>
+					{% endfor %}
+					<p><a href="/feed{{ site.current_section.url }}/atom.xml">
+						<img src="/images/feed_icon32x32.png" align=right height=16>
+						Abonniere Feed</a></p>					
+      			</div>
+    		</div>
+  		
+ 		{% endif %}
+ 
+   		<hr class="hide" />
+    	<div class="primary story">
+			<h1>Buchveröffentlichungen von Jan Kuhl</h1>
+			<p>Im folgenden finden Sie eine Liste meiner bisherigen Buchveröffentlichungen. Bitte nutzen Sie die Kategorisierung links um eine ggf. eine Auswahl zu treffen.</p>
+			<p>Alle Bücher sind über Amazon und Ihren lokalem Buchladen erhältlich. Unterstützen Sie den Autor, und kaufen Sie die Bücher bei Amazon!</p>
+			<p>
+			<script type="text/javascript"><!--
+			amazon_ad_tag="jankuhl-21"; 
+			amazon_ad_width="468"; 
+			amazon_ad_height="60"; 
+			amazon_color_border="199EBD"; 
+			amazon_color_logo="FFFFFF"; 
+			amazon_color_link="202020"; //--></script>
+			<script type="text/javascript" src="http://www.assoc-amazon.de/s/asw.js"></script>
+			</p>
+			{% for article in articles %}
+				<h1>{{ article | link_to_article }}</h1>
+				<p>{{ article.body }}</p>
+				<div class="details">
+			  		{% if article.tags.size > 0 %}
+						unter {{ article | linked_tag_list }}
+					{% endif %}
+					{% if article.comments.size > 0 %}
+	  					 | {{ article | link_to_comments }}
+					{% endif %}
+				</div>
+			{% endfor %}
+    	</div>
+  	<div class="clear"></div>
+	</div>
+
+</div>
+<!-- [END] #primary -->

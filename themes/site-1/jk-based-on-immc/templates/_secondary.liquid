@@ -1,0 +1,48 @@
+<div class="secondary">
+	<div class="featured">
+		{% comment %}
+		<dl>
+			<dt>Autor:</dt>
+			<dd>{{ article.author }}</dd>
+		</dl>
+		{% endcomment %}
+		{% if article_section[:name] != "Projekterfahrung" %}
+			<dl>
+				<dt>Erstmals veröffentlicht:</dt>
+				<dd>{{ article.published_at | strftime: '%d.%m.%y' }}</dd>
+			</dl>
+			{% if article.published_at != article.updated_at %}
+				<dl>
+					<dt>Updated:</dt>
+					<dd>{{ article.updated_at | strftime: '%d.%m.%y' }}</dd>
+				</dl>
+			{% endif %}
+		{% endif %}
+		{% if  article.sections.size > 0 %}
+			<dl>
+				<dt>Kategorien:</dt>
+				<dd>
+					{{ article | linked_section_list }}
+				</dd>
+			</dl>
+		{% endif %}
+		{% if  article.tags.size > 0 %}
+			<dl>
+				<dt>Tags:</dt>
+				<dd>
+    				{% for tag in article.tags %}
+      					{{ tag | link_to_tag }}
+					{% endfor %}
+				</dd>
+			</dl>
+		{% endif %}
+		{% if article.accept_comments %}
+			{% if article_section[:name] != "Projekterfahrung" %}
+				<dl>
+					<dt>{{ article | link_to_comments }}</dt>
+				</dl>
+			{% endif %}
+		{% endif %}
+	</div>
+</div>
+<hr class="hide" />

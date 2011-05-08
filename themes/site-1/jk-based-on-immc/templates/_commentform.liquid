@@ -1,0 +1,11 @@
+<div id="comment-form">
+	{% commentform %}
+		<h3 class="formhead">Sagen Sie Ihre Meinung!</h3>
+		<p>Der kritische Diskurs ist explizit erwünscht. Unsachgemäße Kommentare werden gelöscht. Bitte beachten Sie, dass die Angaben Ihres vollständigen Namens sowie einer validen E-Mail-Adresse notwendig sind. Sie können HTML im Kommentar benutzen.</p>
+		{{ form.name }}<label class="text" for="comment_author">Name</label><br />
+		{{ form.email }}<label class="text" for="comment_author_email">E-Mail</label><br />
+		{{ form.url }}<label class="text" for="comment_author_url">Website</label><br />
+		{{ form.body }}
+		<div class="formactions"><input type="submit" id="comment_submit" value="Senden" /></div>
+	{% endcommentform %}
+</div>

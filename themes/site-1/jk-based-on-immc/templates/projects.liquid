@@ -1,0 +1,64 @@
+<div id="primary" class="single-post">
+
+	{% comment %}
+		{% include 'marketing' %}
+	{% endcomment %}
+
+	<div class="inside">
+
+		{% if site.current_section %}
+
+			{{ site.current_section | section_tags: "Projekt:" | assign_to: 'tags' }}
+
+			<!-- tagcloud -->
+  			{% if tags.size > 0 %}
+				<div class="story">
+					<div class="tagcloud">
+    					Tagcloud Projekte: 
+    					{% for tag in tags %}
+    						{{ tag | yatagcloud: 1, 2, "em" }}/
+    					{% endfor %}
+		    		</div>
+	    		</div>
+  			{% endif %}
+		  	<div class="clear"></div>
+
+  			<div class="secondary menu">
+				<h2>{{ site.current_section.name }}</h2>
+      			<div class="featured">
+					{% for tag in tags %}
+						<p><a href="{{ tag | section_tag_url }}">
+							{{ tag | tag_strip }} ({{ tag | tagged_articles | size }})
+						</a></p>
+					{% endfor %}
+      			</div>
+    		</div>
+  		
+ 		{% endif %}
+ 
+   		<hr class="hide" />
+    	<div class="primary story">
+			<h1>Ausgewählte Projekte</h1>
+			<p>Im folgenden finden Sie eine Liste ausgewählter Beispiele meiner bisherigen Projektaktivitäten insbesondere im Bereich Kinderbuch. Bitte nutzen Sie die Kategorisierung links um ggf. eine weitere Auswahl zu treffen.</p>
+			{% for article in articles %}
+				<h1>{{ article | link_to_article }}</h1>
+				{% comment %}
+					<h1>{{ article[:title] }}</h1>
+			    {% endcomment %}
+				<p>{{ article.body }}</p>
+				<div class="details">
+  					{{ article.published_at | strftime: '%d.%m.20%y' }} | 
+					{% comment %}
+	  					{{ article | link_to_comments }} |
+				    {% endcomment %}
+				  	{% if  article.tags.size > 0 %}
+						unter {{ article | linked_tag_list }} 
+					{% endif %}
+				</div>
+			{% endfor %}
+    	</div>
+  	<div class="clear"></div>
+	</div>
+
+</div>
+<!-- [END] #primary -->

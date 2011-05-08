@@ -1,0 +1,15 @@
+<div id="primary" class="single-post">
+
+	{% comment %}
+		{% include 'marketing' %}
+    {% endcomment %}
+
+	<div class="inside">
+		{% for tag in tags %}
+			<h1>Gefundene Inhalte zu "{{ tag | tag_strip }}"</h1>
+		{% endfor %}
+	</div>
+
+	{% include 'section' %}
+</div>
+<!-- [END] #primary -->

@@ -1,0 +1,75 @@
+##########################################################################################
+# Todos
+
+/# Pagination for articles
+/# Include measure map statistics tool
+/# Make sure that if comments of articles are not permitted then don't depict them
+/# Get google analytics
+/# Google AdSence-Account beantragt
+/# Remove guiding lines from layout
+/# Capistrano installieren und deployen
+/# Howto integrate mongrel into Apache server
+/# Install Feedback Form Plugin for Mephisto - configure ActionMailer first
+/# Install Comment Emailer by Mark Guzman
+/# Include amazon book
+
+# Make sure the right feeds are published (no competency/ profile content, etc.)
+# Check on excerpt or full article
+# Include google sponsored links
+# Add multilingual/ internationalization support
+# Error messages are in English (cf. E-Mail Formular)
+# check on page that's shown if javascript is not enabled
+# E-Mail Adressen vor Spambots schützen
+# Check layout in Internet Explorer
+# IMMC and To the Point titles
+
+##########################################################################################
+# Modifiations necessary
+
+# Needed to change in paranoid.rb in mephisto/vendor/plugin/acts_as_paranoid
+	...
+	# options = args.extract_options!
+	options = extract_options_from_args!(args)
+  	...
+  extract_options! is Edge Rails
+  Cannot install this yet because dependencies with pagination plugin paged_article_list
+
+  To install Edge Rails do
+
+  svn propset svn:externals "rails http://dev.rubyonrails.org/svn/rails/trunk" vendor
+  and link rails dir to vendor/mephisto/vendor
+
+# Google analytics
+
+Kopieren Sie den folgenden Code-Block in jede Webseite, die Sie erfassen möchten.
+Klicken Sie in das untere Feld, um den gesamten Code auszuwählen. Bitte kopieren Sie das Code-Segment und fügen Sie es auf jeder Seite, die Sie erfassen möchten, unter Ihrem Content ein, direkt vor dem Tag </body>: Wenn Sie eine allgemeine Einfügung oder Vorlage verwenden, können Sie diese hier angeben.
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2401321-1";
+urchinTracker();
+</script>
+
+# in _ancillary.liquid: the last 5 articles overall
+
+{% for article in site.latest_articles offset: 0 limit:5 %}
+
+
+##########################################################################################
+# TODOS Jan
+
+# Sponsored links mit Google auf Startseite
+/# Amazon Slideshow Fittipaldi fehlt?
+/# Link zu Amazon hinter jeder Buchveröffentlichung
+/# Überschriften-Formatierung
+/# Datum vor 2006
+/# Artikel durchsehen mit Tags
+/# RSS Feed
+/# Google Analytics
+# Check on javascripts
+# Link to webmaster
+
+Jan
+
+# Artikel und erstes Veröffentlichungsdatum aktualisieren

@@ -1,0 +1,50 @@
+  <div id="primary" class="twocol-stories">
+    <div class="inside">
+{% for article in articles %}
+  {% if forloop.index < 3 %}
+      <div class="story{% if forloop.first %} first{% endif %}">
+        <h3>{{ article | link_to_article }}</h3>
+        {{ article.body }}
+        <div class="details">
+          Posted at {{ article.published_at | strftime: '%H%p on %m/%d/%y' }} | 
+          {{ article | link_to_comments }} |
+          Filed Under: {% for section in article.sections %}{{ section.link }}{% endfor %} | 
+          <span class="read-on"><a href="#">read on</a></span>
+        </div>
+      </div>
+  {% endif %}
+{% endfor %}
+		
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+    <div id="ancillary">
+      <div class="inside">
+        <div class="block first">
+          <h2>About</h2>
+            <p>This is Signal vs. Noise, a weblog by 37signals about design, customer experience, entertainment, politics, Basecamp, Backpack, products we like, small business, ourselves, and more. Established 1999 in Chicago.</p>
+        </div>
+
+        <div class="block">
+          <h2>Recently</h2>
+          <ul class="dates">
+{% for article in articles %}
+            <li><a href="{{ article.url }}"><span class="date">{{ article.published_at | strftime: '%m.%y' }}</span> {{ article.title }}</a></li>
+{% endfor %}
+         </ul>
+      </div>
+			
+      <div class="block">
+        <h2>Categories</h2>
+        <ul class="counts">
+{% for section in sections.list %}
+          <li><a href="{{ section.url }}"><span class="count">11</span>{{ section.name }}</a></li>
+{% endfor %}
+        </ul>
+      </div>
+			
+      <div class="clear"></div>
+    </div>
+  </div>

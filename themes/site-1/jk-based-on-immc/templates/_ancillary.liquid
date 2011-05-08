@@ -1,0 +1,59 @@
+<div id="ancillary">
+	<div class="inside">
+		<div class="block first">
+				<h2>Zur Person</h2>
+				{% include 'person' %}				
+		</div>
+		<div class="block">
+			<h2>Weitere aktuelle Themen</h2>
+			<ul class="dates">
+				{{ '' | section | latest_articles limit:5 | assign_to: 'latest_articles' }}
+				{% for article in latest_articles %}
+					<li>
+					<a href="{{ article['url'] }}">
+						<span class="date">
+							{{ article.published_at | strftime: '%d.%m.' }}
+						</span>
+						{{ article.title }}
+					</a>
+					</li>
+				{% endfor %}
+				<li><a href="/feed/atom.xml">
+					<img src="/images/feed_icon32x32.png" align=right height=16>
+					Abonniere Feed</a></li>					
+				
+			</ul>
+		</div>
+		<div class="block">
+  			<h2>Konkrete Informationen zu</h2>
+  			<ul class="counts">
+				<li><a href="http://astore.amazon.de/jankuhl-21">Online Shop</a>
+				</li>
+				{% for section in site.sections %}
+					{% if section.url != '/' %}
+						{% if section.current %}
+							<li class="selected">{{ section | link_to_section  }}</li>
+						{% else %}
+							<li>{{ section | link_to_section  }}</li>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+  			</ul>
+		</div>
+		<div class="block">
+			<!-- tagcloud -->
+			{% if site.tags.size > 0 %}
+				<h2>Suche nach Stichworten/ Tagcloud</h2>
+				<p style="overflow:hidden" class="tagcloud">
+				{{ site.tags | weight_tags: 15 | assign_to: 'weighted_tags' }}
+				{% for tag in weighted_tags %}
+					{{ tag[0] | yatagcloud: 1.0, 1.7, "em" }}/
+				{% endfor %}
+				</p>
+			{% endif %}
+			<!-- search -->
+			{% include 'search' %}
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div id="primary" class="single-post">
+	<div class="inside">
+    	<div class="secondary menu">
+			<h2>{{ site.current_section.name }}</h2>
+      		<div class="featured">
+				{% for page in section.articles %}
+			   	<p>{{ page | link_to_page }}</p>
+				{% endfor %}
+      		</div>
+    	</div>
+    	<hr class="hide" />
+    	<div class="primary story">
+	  		<h1>{{ article.title }}</h1>
+      		{{ article.body }}
+			{% if article.title == "Kontakt" %}
+				{% include 'contactform' %}
+			{% endif %}
+    	</div>
+  	<div class="clear"></div>
+	</div>
+</div>
+<!-- [END] #primary -->

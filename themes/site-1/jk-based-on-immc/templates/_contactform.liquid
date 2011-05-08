@@ -1,0 +1,18 @@
+<div id="contact-form">
+	{% contactform %}
+		{{ form.mrs }}<label class="text" for="mrs">Anrede *)</label><br />
+		{{ form.name }}<label class="text" for="name">Vorname *)</label><br />
+		{{ form.surname }}<label class="text" for="surname">Nachname *)</label><br />
+		{{ form.company }}<label class="text" for="company">Firma</label><br />
+		{{ form.street }}<label class="text" for="street">Straße</label><br />
+		{{ form.city }}<label class="text" for="city">PLZ Ort</label><br />
+		{{ form.phone}}<label class="text" for="phone">Telefon</label><br />
+		{{ form.fax}}<label class="text" for="fax">Telefax</label><br />
+		{{ form.email }}<label class="text" for="email">E-Mail Adresse *)</label><br />
+		{{ form.subject}}<label class="text" for="subject">Betreff und Nachricht *)</label><br />
+		{{ form.body }}
+		{{ form.cc }}<label class="text" for="cc">CC (Kopie senden an)</label><br />
+		<div class="formactions"><input type="submit" id="contact_submit" value="Senden" /></div>
+		<p>*) Notwendige Angaben</p>
+	{% endcontactform %}
+</div>

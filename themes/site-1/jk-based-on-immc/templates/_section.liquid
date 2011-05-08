@@ -1,0 +1,33 @@
+{% if articles.size > 0 %}
+	{% for article in articles %}
+		<div class="inside">
+		
+			{{ article.sections | index: 0 | assign_to: 'article_section' }}
+			
+			{% include 'secondary' %}
+			
+			<div class="primary story">
+				{% if article_section[:name] != "Projekterfahrung" %}
+					<h1>{{ article | link_to_article }}</h1>
+				{% else %}
+					<h1>{{ article[:title] }}</h1>
+				{% endif %}
+				<p>{{ article.body }}</p>
+    		</div>
+			<div class="clear"></div>
+		</div>
+		<hr class="hide" />
+	{% endfor %}
+	<div class="inside">
+		{% if pages %}
+			<p>	
+				{{ section | link_to_prev_section_page: pages, "neuere Einträge &raquo;" }}
+				{{ section | link_to_next_section_page: pages, "&laquo; frühere Einträge" }}
+			</p>	
+		{% endif %}
+	</div>
+{% else %}
+	<div class="inside">
+		<h2>Diese Kategorie enhält noch keine Inhalte.</h2>
+	</div>
+{% endif %}

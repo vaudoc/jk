@@ -1,0 +1,25 @@
+Yet-Another... TAG CLOUD!!! (RUN for the HILLS, Everybody!!!)
+
+THIS is the tag cloud implementation to Solve ALL your tag cloud problems!!!  HAVE FUN!!!! *HOW* could anybody live without a Tag Cloud to guide them on their informational journeys I don't know. OH WAIT - I think I know. They must be living under a ROCK!!! ;P
+
+But seriously - it's as basic as this...:
+
+    {% for tag in site.tags %}
+        {{ tag | yatagcloud }}
+    {% endfor %}
+
+'yatagcloud' takes in 3 optional parameters, but like Rails, comes built-in with sane defaults already - Convention over Configuration, where have we heard that all before... ;)
+
+These parameters are in order:
+
+    - "floor" of size range for your tags
+    - "ceiling" of size range for your tags
+    - unit - what units do you want to "size" your tags in?
+
+Example:
+
+    {{ tag | yatagcloud: 0.8, 3, "em" }}
+
+will give you tags ranging from 1 to 3 em in size.
+
+Comments on HOW COOL this rockin' roll implementation of the Tag Cloud is ARE WELCOME - and may be sent to: http://rubbedcode.com/blog/. OR jeff at RUBBEDCode dot com. DON'T SEND SPAM!!! Oh wait - maybe you should. I need to train my spam filter. ;)

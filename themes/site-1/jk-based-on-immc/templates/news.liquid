@@ -1,0 +1,39 @@
+<div id="primary" class="twocol-stories">
+
+	{% include 'marketing' %}
+
+	<div class="inside">
+		<div style="text-align: left; z-index: 1;">
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_d623adc6-d3b0-46b6-83f0-2b3881d44c01"  WIDTH="800px" HEIGHT="200px"> <PARAM NAME="movie" VALUE="http://ws.amazon.de/widgets/q?ServiceVersion=20070822&MarketPlace=DE&ID=V20070822%2FDE%2Fdrvolger-21%2F8003%2Fd623adc6-d3b0-46b6-83f0-2b3881d44c01&Operation=GetDisplayTemplate"><PARAM NAME="quality" VALUE="high"><PARAM NAME="bgcolor" VALUE="#FFFFFF"><PARAM NAME="allowscriptaccess" VALUE="always"><embed src="http://ws.amazon.de/widgets/q?ServiceVersion=20070822&MarketPlace=DE&ID=V20070822%2FDE%2Fdrvolger-21%2F8003%2Fd623adc6-d3b0-46b6-83f0-2b3881d44c01&Operation=GetDisplayTemplate" id="Player_d623adc6-d3b0-46b6-83f0-2b3881d44c01" quality="high" bgcolor="#ffffff" name="Player_d623adc6-d3b0-46b6-83f0-2b3881d44c01" allowscriptaccess="always"  type="application/x-shockwave-flash" align="middle" height="200px" width="800px"/> </OBJECT> <NOSCRIPT><A HREF="http://ws.amazon.de/widgets/q?ServiceVersion=20070822&MarketPlace=DE&ID=V20070822%2FDE%2Fdrvolger-21%2F8003%2Fd623adc6-d3b0-46b6-83f0-2b3881d44c01&Operation=NoScript">Amazon.de Widgets</A></NOSCRIPT>
+		</div>
+				{% comment %}
+		<div style="text-align: center"><embed src="http://www.imageloop.com/looopSlider.swf?id=7000b5e3-4942-188e-a5f4-0015c5febdc7&c=01,01,02,01" type="application/x-shockwave-flash" quality="high" scale="noscale" salign="l" wmode="transparent" width="800" height="200" style="width:800px;height:200px;" align="middle">
+		</embed></div>
+    {% endcomment %}
+
+ 		{% for article in articles %}
+  			{% if forloop.index < 3 %}
+      			<div class="story {% if forloop.first %} first {% endif %}">
+        			<h1>{{ article | link_to_article }}</h1>
+        			{{ article.content }}
+        			<div class="details">
+          				{{ article.published_at | strftime: '%d.%m.20%y' }} | 
+						{% comment %}
+          					{{ article | link_to_comments }} |
+					    {% endcomment %}
+					  	{% if  article.tags.size > 0 %}
+							unter {{ article | linked_tag_list }} |
+						{% endif %}
+					  	{% if  article.sections.size > 0 %}
+          					in {{ article | linked_section_list }} |
+						{% endif %}
+		          		<span class="read-on">
+							<a href="{{ article['url'] }}">weiter ...</a>
+						</span>
+        			</div>
+      			</div>
+  			{% endif %}
+		{% endfor %}
+   		<div class="clear"></div>
+	</div>
+</div>

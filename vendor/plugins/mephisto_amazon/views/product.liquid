@@ -1,0 +1,12 @@
+<p>
+	<div>
+	{% if product.image_url_small != null %}
+		<a href="http://www.amazon.de/exec/obidos/ASIN/{{product.asin}}/drvolkergerha-21"><img src="{{product.image_url_medium}}" border=0 width=80/></a>
+	{% else %}
+	<br/>
+	(No image available)	
+	{% endif %}
+	<br/>
+		<a href="http://www.amazon.de/exec/obidos/ASIN/{{product.asin}}/drvolkergerha-21">{{product.name}}</a>
+	</div>
+</p>

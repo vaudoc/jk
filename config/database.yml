@@ -1,0 +1,19 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+#  socket: /private/tmp/mysql.sock
+  username: root
+  password:
+
+development:
+  database: jan_kuhl_mephisto
+  <<: *login
+
+test:
+  database: jan_kuhl_mephisto_test
+  <<: *login
+
+production:
+  database: jan_kuhl_mephisto
+  <<: *login

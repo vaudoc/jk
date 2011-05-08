@@ -1,0 +1,88 @@
+<div id="primary" class="single-post">
+	<div class="inside">
+
+		{% comment %}
+			{% include 'marketing' %}
+	    {% endcomment %}
+		{% include 'secondary' %}
+
+		<div class="primary story">
+			<h1>{{ article | link_to_article }}</h1>
+      		{{ article.body }}
+    	</div>
+
+  		<div class="clear"></div>
+	</div>
+</div>
+<!-- [END] #primary -->
+
+<!-- Comments -->
+{% if article.accept_comments %}
+	<hr class="hide" />
+	<div id="secondary">
+  		<div class="inside">
+			<h3>
+				{{ article.comments_count | pluralize: 'Kommentar' }}
+	    		<span><a href="#comment-form">&raquo Formular</a></span>
+			</h3>
+		</div>
+		{% if article.comments.size > 0 %}
+			{% for comment in article.comments %}
+				<div class="inside">
+
+					<div class="secondary">
+						<div class="featured">
+							<span style="color: #eee">.</span>
+							{% comment %}
+							<dl>
+								<dt>Autor:</dt>
+								<dd>{{ comment.author }}</dd>
+							</dl>
+							<dl>
+								<dt>Datum:</dt>
+								<dd>{{ comment.created_at | strftime: '%d.%m.%y'}}</dd>
+							</dl>
+					    	{% endcomment %}
+						</div>
+					</div>
+					<hr class="hide" />
+
+					<div class="primary story">
+						<h3>{{ forloop.index }}. {{ comment.author }} am 
+							{{ comment.created_at | strftime: '%d.%m.%y um %H.%M Uhr'}}:
+						</h3>
+						<p>{{ comment.body }}</p>
+						{% comment %}
+        				<div class="details">
+          					{{ comment.created_at | strftime: '%d.%m.%y um %H.%M Uhr'}} | 
+							{{ comment.author }} |
+							{{ comment.author_email }}
+        				</div>
+				    	{% endcomment %}
+    				</div>
+					<div class="clear"></div>
+				</div>
+				<hr class="hide" />
+			{% endfor %}
+		{% else %}
+			<div class="inside">
+				<h2>Dieser Artikel lässt entweder keine Kommentare zu oder wurde bisher nicht explizit kommentiert.</h2>
+			</div>
+		{% endif %}
+
+  		<div class="inside">
+			<div class="secondary">
+				<div class="featured">
+					<span style="color: #eee">.</span>
+				</div>
+			</div>
+			<hr class="hide" />
+
+			<div class="primary story">
+				{% include 'commentform' %}
+   			</div>
+			<div class="clear"></div>
+  		</div>
+		<hr class="hide" />
+	</div>
+{% endif %}

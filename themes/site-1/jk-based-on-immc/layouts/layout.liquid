@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% head %}
+	<title>Jan Kuhl</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{{ 'style' | stylesheet }}
+  	{{ head.feed }}
+	{{ 'css_browser_selector' | javascript }}
+{% endhead %}
+<body>
+	<div id="header">
+		<div class="inside">
+			<h2><a href="/">{{ site.title }}</a></h2>
+			<p class="description">{{ site.subtitle }}</p>
+		</div>
+	</div>
+
+	{{ content_for_layout }}
+
+	<hr class="hide" />
+	{% include 'ancillary' %}
+
+	<hr class="hide" />
+	{% include 'footer' %}
+</body>
+</html>

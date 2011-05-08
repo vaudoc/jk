@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+spawner_path = File.dirname(__FILE__) + '/../script/process'
+
+# start 2 mongrel processes, on ports 2189-2190
+exec "#{spawner_path}/spawner -p 2189 -i 2"
