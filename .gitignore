@@ -10,5 +10,8 @@
 *.pid
 tmp/
 
+.bundle
+vendor/bundle
+
 *.sqlite*
 db/jan_*
